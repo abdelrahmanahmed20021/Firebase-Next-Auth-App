@@ -23,7 +23,8 @@ export default function LForm() {
       display="flex"
       flexDir={"column"}
       as={"form"}
-      width={"auto"}
+      padding={{base:"30px",md:"0"}}
+      width={{ base: "100%", md: "auto" }}
     >
       <InputGroup>
         <InputRightElement
@@ -42,7 +43,7 @@ export default function LForm() {
           }
         />
         <Input
-          width={"400px"}
+          width={{ base: "100%", md: "400px" }}
           size={"lg"}
           bg={"light.800"}
           variant={"filled"}
@@ -61,6 +62,7 @@ export default function LForm() {
         <InputRightElement
           children={
             <Button
+              marginTop={"6px"}
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
@@ -75,9 +77,11 @@ export default function LForm() {
           }
         />
         <Input
-          width={"400px"}
+          width={{ base: "100%", md: "400px" }}
           size={"lg"}
           bg={"light.800"}
+          display={"flex"}
+          alignItems={"center"}
           variant={"filled"}
           type={type}
           _focus={{

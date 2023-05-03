@@ -16,6 +16,7 @@ import pattern from "/public/images/pattern.png";
 
 import Link from "next/link";
 import LForm from "@/components/LForm";
+import ModeController from "@/components/ModeController";
 
 export default function page() {
   const textColor = useColorModeValue("dark.900", "light.900");
@@ -37,29 +38,33 @@ export default function page() {
         width: "100%",
         height: "100%",
         backgroundImage: `${Rectangle.src}`,
-        backgroundSize: { md: "contain", lg: "cover" },
+        backgroundSize: { base: "0px", md: "contain", lg: "cover" },
         backgroundRepeat: "no-repeat",
-        backgroundPosition: { md: "bottom left", lg: "top left" },
+        backgroundPosition: {
+          base: "bottom right",
+          md: "bottom left",
+          lg: "top left",
+        },
       }}
     >
-      <Flex flexDirection={"column"}>
+      <Flex flexDirection={"column"} gap={"20px"}>
         <Flex
           position={"relative"}
           justifyContent={"space-between"}
-          padding={{ md: "100px 30px", lg: "100px 60px" }}
+          padding={{ base: "20px 40px", md: "100px 30px", lg: "100px 60px" }}
           paddingBottom={"0"}
         >
-          <Flex flexDirection={"column"} gap={"80px "}>
+          <Flex flexDirection={"column"} gap={{ base: "30px", md: "80px" }}>
             <Heading
               color={textColor}
-              fontSize={{ md: "2.3rem", lg: "3.3rem" }}
-              lineHeight={"72px"}
+              fontSize={{ base: "2rem", md: "2.3rem", lg: "3.3rem" }}
+              lineHeight={{ base: "52px", md: "72px" }}
             >
               Log In to <br />
               Recharge Direct
             </Heading>
             <Text
-              fontSize={{ md: "1rem", lg: "1.2rem" }}
+              fontSize={{ base: ".8rem", md: "1rem", lg: "1.2rem" }}
               color={textColor}
               fontWeight={"500"}
               lineHeight={"32px"}
@@ -70,7 +75,11 @@ export default function page() {
               </Text>
             </Text>
           </Flex>
-          <Stack position={"absolute"} right={"30px"}>
+          <Stack
+            display={{ base: "none", md: "block" }}
+            position={"absolute"}
+            right={"30px"}
+          >
             <Image
               src={Humen.src}
               width={Humen.width / 1.3}
@@ -82,13 +91,16 @@ export default function page() {
         <Flex
           justifyContent={"center"}
           alignItems={"center"}
-          position={"absolute"}
+          position={{ base: "static", md: "absolute" }}
           top={{ md: "70%", lg: "50%" }}
           left={"50%"}
           transform={{ md: "translate(-50%,-70%)", lg: "translate(-50%,-50%)" }}
         >
           <LForm />
         </Flex>
+        <Box position={"fixed"} bottom={{base:"95%",md:"30px"}} right={"30px"} zIndex={"100"}>
+          <ModeController />
+        </Box>
       </Flex>
     </Box>
   );
