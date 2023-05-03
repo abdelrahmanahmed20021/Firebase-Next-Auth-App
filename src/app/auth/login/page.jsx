@@ -22,11 +22,12 @@ export default function page() {
   return (
     <Box
       backgroundImage={pattern.src}
-      height={"100vh"}
+      minHeight={"100vh"}
       backgroundSize={"cover"}
       backgroundPosition={"bottom center"}
       position="relative"
       zIndex={"1"}
+      backgroundRepeat={"no-repeat"}
       _after={{
         content: `""`,
         position: "absolute",
@@ -36,39 +37,56 @@ export default function page() {
         width: "100%",
         height: "100%",
         backgroundImage: `${Rectangle.src}`,
-        backgroundSize: "cover",
-        backgroundPosition: "top left",
+        backgroundSize: { md: "contain", lg: "cover" },
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: { md: "bottom left", lg: "top left" },
       }}
     >
       <Flex flexDirection={"column"}>
         <Flex
           position={"relative"}
           justifyContent={"space-between"}
-          padding={"100px 60px"}
+          padding={{ md: "100px 30px", lg: "100px 60px" }}
           paddingBottom={"0"}
         >
           <Flex flexDirection={"column"} gap={"80px "}>
-            <Heading color={textColor} fontSize={"3.3rem"} lineHeight={"72px"}>
+            <Heading
+              color={textColor}
+              fontSize={{ md: "2.3rem", lg: "3.3rem" }}
+              lineHeight={"72px"}
+            >
               Log In to <br />
               Recharge Direct
             </Heading>
             <Text
-              fontSize={"1.2rem"}
+              fontSize={{ md: "1rem", lg: "1.2rem" }}
               color={textColor}
               fontWeight={"500"}
               lineHeight={"32px"}
             >
-              if you don’t an account <br /> you can{" "}
+              if you don’t have an account <br /> you can{" "}
               <Text as={"span"} color={"blue.900"} fontWeight={"700"}>
                 <Link href={"#"}>Register here!</Link>
               </Text>
             </Text>
           </Flex>
           <Stack position={"absolute"} right={"30px"}>
-            <Image src={Humen.src} width={Humen.width} height={Humen.height} />
+            <Image
+              src={Humen.src}
+              width={Humen.width / 1.3}
+              height={Humen.height / 1.3}
+              alt="Human"
+            />
           </Stack>
         </Flex>
-        <Flex justifyContent={"center"} alignItems={"center"}>
+        <Flex
+          justifyContent={"center"}
+          alignItems={"center"}
+          position={"absolute"}
+          top={{ md: "70%", lg: "50%" }}
+          left={"50%"}
+          transform={{ md: "translate(-50%,-70%)", lg: "translate(-50%,-50%)" }}
+        >
           <LForm />
         </Flex>
       </Flex>
