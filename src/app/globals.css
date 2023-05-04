@@ -5,3 +5,40 @@
   margin: 0;
   box-sizing: border-box;
 }
+.mode-animation-moon {
+  right: -100%;
+  animation: moveMoon 0.3s ease forwards;
+}
+.mode-animation-sun {
+  left: -100%;
+  animation: moveSun 0.3s ease forwards;
+}
+
+@keyframes moveSun {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes moveMoon {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 50%;
+  }
+}
+.humen-animation {
+  top: 80px;
+  animation: humen 2s linear alternate-reverse infinite;
+}
+@keyframes humen {
+  from {
+    top: 80px;
+  }
+  to {
+    top: 100px;
+  }
+}

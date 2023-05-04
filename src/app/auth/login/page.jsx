@@ -79,6 +79,25 @@ export default function page() {
             display={{ base: "none", md: "block" }}
             position={"absolute"}
             right={"30px"}
+            className="humen-animation"
+            _after={{
+              content: `""`,
+              position: "absolute",
+              width: "120px",
+              height: "120px",
+              borderRadius: "50%",
+              bottom: "-120px",
+              left: "0",
+            }}
+            _before={{
+              content: `""`,
+              position: "absolute",
+              width: "120px",
+              height: "120px",
+              borderRadius: "50%",
+              bottom: "-120px",
+              left: "150px",
+            }}
           >
             <Image
               src={Humen.src}
@@ -98,7 +117,12 @@ export default function page() {
         >
           <LForm />
         </Flex>
-        <Box position={"fixed"} bottom={{base:"95%",md:"30px"}} right={"30px"} zIndex={"100"}>
+        <Box
+          position={"fixed"}
+          bottom={{ base: "93%", md: "30px" }}
+          right={"30px"}
+          zIndex={"100"}
+        >
           <ModeController />
         </Box>
       </Flex>

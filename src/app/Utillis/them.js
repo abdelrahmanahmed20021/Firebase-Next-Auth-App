@@ -7,7 +7,7 @@ const colors = {
   },
   gray: {
     900: "#667085",
-    800: "#677185",
+    800: "#14162E",
     700: "#ACADAC",
     600: "#C7C7C7",
     500: "#DDDFDD",
@@ -24,7 +24,7 @@ const colors = {
   },
 };
 const config = {
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 

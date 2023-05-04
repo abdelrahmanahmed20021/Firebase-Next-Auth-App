@@ -23,7 +23,7 @@ export default function LForm() {
       display="flex"
       flexDir={"column"}
       as={"form"}
-      padding={{base:"30px",md:"0"}}
+      padding={{ base: "30px", md: "0" }}
       width={{ base: "100%", md: "auto" }}
     >
       <InputGroup>
@@ -102,6 +102,7 @@ export default function LForm() {
           bg={"blue.900"}
           color={"light.900"}
           fontWeight={"bold"}
+          boxShadow={"10px 10px 30px #4ebaf82f,-10px -10px 30px #65c6ff36"}
           size={"lg"}
           _hover={{ bg: "blue.800" }}
           type="submit"
@@ -134,6 +135,7 @@ export default function LForm() {
           fontWeight={"bold"}
           size={"lg"}
           _hover={{ bg: "blue.900" }}
+          boxShadow={"10px 10px 30px #4ebaf82f,-10px -10px 30px #65c6ff36"}
           type="submit"
         >
           Google
