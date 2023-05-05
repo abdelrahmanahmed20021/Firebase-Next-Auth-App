@@ -71,7 +71,7 @@ export default function page() {
             >
               if you don’t have an account <br /> you can{" "}
               <Text as={"span"} color={"blue.900"} fontWeight={"700"}>
-                <Link href={"#"}>Register here!</Link>
+                <Link href={"/auth/signin"}>Register here!</Link>
               </Text>
             </Text>
           </Flex>

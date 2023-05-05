@@ -16,13 +16,14 @@ import {
 import Link from "next/link";
 import { message } from "@/app/Utillis/validations";
 
-export default function LForm() {
+export default function SForm() {
   const [type, setType] = useState("password");
+  const [type_2, setType_2] = useState("password");
   const regexEmailPattern = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
   const regexPasswordPattern =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  const LoginFun = (e) => {
+  const SigninFun = (e) => {
     e.preventDefault();
     // message("warning", "Hello world", "top-left", 3000, "dark");
     if (e.target[0].value == "" || !regexEmailPattern.test(e.target[0].value)) {
@@ -39,7 +40,16 @@ export default function LForm() {
     ) {
       message(
         "warning",
-        `Please Enter Valid Password`,
+        `Please Enter Valid Password Minimum eight characters, at least one
+         uppercase letter, one lowercase letter, one number and one special character`,
+        "top-left",
+        3000,
+        "dark"
+      );
+    } else if (e.target[4].value != e.target[2].value) {
+      message(
+        "warning",
+        `Please Check Your Confirm Password`,
         "top-left",
         3000,
         "dark"
@@ -55,7 +65,7 @@ export default function LForm() {
       as={"form"}
       padding={{ base: "30px", md: "0" }}
       width={{ base: "100%", md: "auto" }}
-      onSubmit={LoginFun}
+      onSubmit={SigninFun}
     >
       <InputGroup>
         <InputRightElement
@@ -75,8 +85,8 @@ export default function LForm() {
         />
         <Input
           width={{ base: "100%", md: "400px" }}
-          _hover={{ bg: "gray.600" }}
           size={"lg"}
+          _hover={{ bg: "gray.600" }}
           bg={"light.800"}
           variant={"filled"}
           type="email"
@@ -127,8 +137,45 @@ export default function LForm() {
           placeholder="Enter Password"
         />
       </InputGroup>
+      <InputGroup>
+        <InputRightElement
+          children={
+            <Button
+              marginTop={"6px"}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              color={"gray.900"}
+              variant={"unstyled"}
+              onClick={() =>
+                type_2 == "text" ? setType_2("password") : setType_2("text")
+              }
+            >
+              <AiFillEyeInvisible size={"21px"} />
+            </Button>
+          }
+        />
+        <Input
+          width={{ base: "100%", md: "400px" }}
+          _hover={{ bg: "gray.600" }}
+          size={"lg"}
+          bg={"light.800"}
+          display={"flex"}
+          alignItems={"center"}
+          variant={"filled"}
+          type={type_2}
+          _focus={{
+            bg: "dark.900",
+            color: "light.900",
+            borderColor: "gray.900",
+          }}
+          color={"gray.900"}
+          _placeholder={{ color: "gray.900" }}
+          placeholder="Confirm Password"
+        />
+      </InputGroup>
       <Text color={"gray.400"} textAlign={"end"}>
-        <Link href={"#"}>Forget Password ?</Link>
+        <Link href={"/auth/login"}>Have an account ?</Link>
       </Text>
       <Flex direction={"column"} gap={"60px"}>
         <Button
@@ -140,38 +187,7 @@ export default function LForm() {
           _hover={{ bg: "blue.800" }}
           type="submit"
         >
-          Login
-        </Button>
-        <Stack
-          height={"1px"}
-          position={"relative"}
-          zIndex={"1"}
-          _after={{
-            content: `"Or continue with"`,
-            position: "absolute",
-            fontSize: "12px",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            color: "gray.400",
-            backgroundColor: "blue.800",
-            padding: "5px 10px",
-            borderRadius: "5px",
-            zIndex: "2",
-          }}
-          bg={"gray.400"}
-        ></Stack>
-        <Button
-          rightIcon={<FcGoogle />}
-          bg={"blue.800"}
-          color={"gray.400"}
-          fontWeight={"bold"}
-          size={"lg"}
-          _hover={{ bg: "blue.900" }}
-          boxShadow={"10px 10px 30px #4ebaf82f,-10px -10px 30px #65c6ff36"}
-          type="submit"
-        >
-          Google
+          Sign in
         </Button>
       </Flex>
     </FormControl>
