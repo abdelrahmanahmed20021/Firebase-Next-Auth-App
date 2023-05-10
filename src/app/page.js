@@ -1,6 +1,38 @@
 "use client";
-import { Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { app } from "../../FB";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import LPage from "./auth/login/page";
+import { useGState } from "./Context/Context";
+import DrawerBar from "@/components/DrawerBar;";
 
 export default function Home() {
-  return <Heading color={"blue.800"}>Hello Guss</Heading>;
+  const { user, setUser } = useGState();
+  useEffect(() => {
+    const auth = getAuth(app);
+    const checkUserState = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      console.log(user);
+    });
+    return () => {
+      checkUserState();
+    };
+  }, []);
+
+  if (user == "") {
+    return <Heading>Loading....</Heading>;
+  }
+  if (user == null) {
+    return <LPage />;
+  }
+
+  return (
+    <Flex>
+      <DrawerBar />
+    </Flex>
+  );
 }

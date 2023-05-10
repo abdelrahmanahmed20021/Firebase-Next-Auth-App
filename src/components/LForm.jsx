@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { message } from "@/app/Utillis/validations";
+import { LoginGoogle } from "../../FB";
 
 export default function LForm() {
   const [type, setType] = useState("password");
@@ -169,7 +170,7 @@ export default function LForm() {
           size={"lg"}
           _hover={{ bg: "blue.900" }}
           boxShadow={"10px 10px 30px #4ebaf82f,-10px -10px 30px #65c6ff36"}
-          type="submit"
+          onClick={LoginGoogle}
         >
           Google
         </Button>

@@ -18,7 +18,7 @@ import Link from "next/link";
 import LForm from "@/components/LForm";
 import ModeController from "@/components/ModeController";
 
-export default function page() {
+export default function LPage() {
   const textColor = useColorModeValue("dark.900", "light.900");
   return (
     <Box
