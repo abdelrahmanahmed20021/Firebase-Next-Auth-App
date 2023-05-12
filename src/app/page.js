@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import LPage from "./auth/login/page";
 import { useGState } from "./Context/Context";
 import DrawerBar from "@/components/DrawerBar;";
+import ModeController from "@/components/ModeController";
 
 export default function Home() {
   const { user, setUser } = useGState();
@@ -31,8 +32,9 @@ export default function Home() {
   }
 
   return (
-    <Flex>
+    <Flex padding={"30px"} justifyContent={"space-between"}>
       <DrawerBar />
+      <ModeController />
     </Flex>
   );
 }
